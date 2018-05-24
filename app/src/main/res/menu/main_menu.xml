@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/SORT_BY_POPULARITY" android:id="@+id/btnPopularity" />
+    <item android:title="@string/SORT_BY_RATING" android:id="@+id/btnRating" />
+    <item android:title="@string/EXIT" android:id="@+id/btnExit" />
+</menu>

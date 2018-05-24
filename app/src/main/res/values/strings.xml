@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Popular Movies</string>
+    <string name="BASE_URL_POPULAR">http://api.themoviedb.org/3/movie/popular</string>
+    <string name="BASE_URL_TOP_RATED">http://api.themoviedb.org/3/movie/top_rated</string>
+    <string name="BASE_URL_IMAGE">http://image.tmdb.org/t/p/w185/</string>
+    <string name="API_KEY">put your API key here</string>
+    <string name="NO_INTERNET">No data found on server</string>
+    <string name="NO_INTERNET_TITLE">Internet not Available</string>
+    <string name="NO_INTERNET_MESSAGE">Internet is required to use Popular movies. Do you want to go to settings menu?</string>
+    <string name="SETTINGS">Settings</string>
+    <string name="EXIT">Exit</string>
+    <string name="MOVIE_DETAILS">Movie Details</string>
+    <string name="SOMETHING_WRONG">Something Went Wrong!</string>
+    <string name="THUMBNAIL">Movie Poster</string>
+    <string name="SORT_BY_POPULARITY">Sort By Popularity</string>
+    <string name="SORT_BY_RATING">Sort By Rating</string>
+
+</resources>
