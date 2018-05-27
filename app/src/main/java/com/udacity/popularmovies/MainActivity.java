@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,10 +15,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
-import com.udacity.popularmovies.Utils.GridViewAdapter;
-import com.udacity.popularmovies.Utils.IMoviesAsync;
-import com.udacity.popularmovies.Utils.Movie;
-import com.udacity.popularmovies.Utils.MoviesAsync;
+import com.udacity.popularmovies.utils.GridViewAdapter;
+import com.udacity.popularmovies.utils.IMoviesAsync;
+import com.udacity.popularmovies.utils.Movie;
+import com.udacity.popularmovies.utils.MoviesAsync;
 
 import java.util.ArrayList;
 
@@ -84,6 +85,8 @@ public class MainActivity extends BaseActivity implements IMoviesAsync{
             Toast.makeText(MainActivity.this,getResources().getString(R.string.NO_INTERNET), Toast.LENGTH_LONG).show();
         }
         else {
+
+            Log.d(TAG, "setupData: "+movies);
             setTitle(currentSortOrder);
             progressDialog.dismiss();
             movieArrayList.clear();
@@ -156,7 +159,7 @@ public class MainActivity extends BaseActivity implements IMoviesAsync{
             alertDialogBuilder.show();
         }
         else {
-            new MoviesAsync(MainActivity.this).execute(getApiURL());
+            new MoviesAsync(MainActivity.this, getResources().getInteger(R.integer.CONNECTION_TIMEOUT)).execute(getApiURL());
 
         }
 

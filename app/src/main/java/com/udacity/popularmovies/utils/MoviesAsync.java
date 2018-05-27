@@ -1,4 +1,4 @@
-package com.udacity.popularmovies.Utils;
+package com.udacity.popularmovies.utils;
 
 import android.os.AsyncTask;
 
@@ -7,7 +7,6 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -18,9 +17,11 @@ import java.util.ArrayList;
 public class MoviesAsync extends AsyncTask<String, Void, ArrayList<Movie>> {
 
     private IMoviesAsync activity;
+    private int timeOut;
 
-    public MoviesAsync(IMoviesAsync activity){
+    public MoviesAsync(IMoviesAsync activity,int timeOut){
         this.activity = activity;
+        this.timeOut = timeOut;
 
     }
 
@@ -35,6 +36,7 @@ public class MoviesAsync extends AsyncTask<String, Void, ArrayList<Movie>> {
 
             URL url = new URL(params[0]);
             connection = (HttpURLConnection) url.openConnection();
+            connection.setConnectTimeout(timeOut);
             connection.connect();
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 String json = IOUtils.toString(connection.getInputStream(), "UTF8");

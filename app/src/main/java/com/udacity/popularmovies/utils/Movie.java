@@ -1,8 +1,11 @@
-package com.udacity.popularmovies.Utils;
+package com.udacity.popularmovies.utils;
+
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.io.Serializable;
 
-public class Movie implements Serializable{
+public class Movie implements Parcelable {
 
     private Long id;
     private String title;
@@ -71,4 +74,40 @@ public class Movie implements Serializable{
     public void setOverview(String overview) {
         this.overview = overview;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.id);
+        dest.writeString(this.title);
+        dest.writeString(this.release_date);
+        dest.writeString(this.poster_path);
+        dest.writeDouble(this.vote_average);
+        dest.writeString(this.overview);
+    }
+
+    protected Movie(Parcel in) {
+        this.id = (Long) in.readValue(Long.class.getClassLoader());
+        this.title = in.readString();
+        this.release_date = in.readString();
+        this.poster_path = in.readString();
+        this.vote_average = in.readDouble();
+        this.overview = in.readString();
+    }
+
+    public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {
+        @Override
+        public Movie createFromParcel(Parcel source) {
+            return new Movie(source);
+        }
+
+        @Override
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
 }

@@ -3,7 +3,7 @@
     <string name="BASE_URL_POPULAR">http://api.themoviedb.org/3/movie/popular</string>
     <string name="BASE_URL_TOP_RATED">http://api.themoviedb.org/3/movie/top_rated</string>
     <string name="BASE_URL_IMAGE">http://image.tmdb.org/t/p/w185/</string>
-    <string name="API_KEY">put your API key here</string>
+    <string name="API_KEY">put API Key here</string>
     <string name="NO_INTERNET">No data found on server</string>
     <string name="NO_INTERNET_TITLE">Internet not Available</string>
     <string name="NO_INTERNET_MESSAGE">Internet is required to use Popular movies. Do you want to go to settings menu?</string>

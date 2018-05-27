@@ -1,4 +1,4 @@
-package com.udacity.popularmovies.Utils;
+package com.udacity.popularmovies.utils;
 
 import java.util.ArrayList;
 

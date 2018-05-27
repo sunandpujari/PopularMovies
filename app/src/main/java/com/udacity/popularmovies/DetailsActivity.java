@@ -2,6 +2,7 @@ package com.udacity.popularmovies;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
-import com.udacity.popularmovies.Utils.Movie;
+import com.udacity.popularmovies.utils.Movie;
 
 public class DetailsActivity extends BaseActivity {
 
@@ -26,7 +27,7 @@ public class DetailsActivity extends BaseActivity {
         if(getIntent() != null) {
 
             Intent intent = getIntent();
-            Movie movie = (Movie) intent.getSerializableExtra(MOVIE_EXTRA_KEY);
+            Movie movie = intent.getParcelableExtra(MOVIE_EXTRA_KEY);
 
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             setTitle(getResources().getString(R.string.MOVIE_DETAILS));
@@ -62,7 +63,7 @@ public class DetailsActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                onBackPressed();
+                NavUtils.navigateUpFromSameTask(this);
                 return true;
             case R.id.btnExit:
                 finishAffinity();

@@ -27,63 +27,63 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
-        android:layout_weight="2"
+        android:layout_weight="3.5"
         android:gravity="fill_vertical"
         android:orientation="horizontal"
-        android:weightSum="2">
-
-
-        <ImageView
-            android:id="@+id/imgPoster"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="fill_vertical"
-            android:layout_weight="1"
-            android:contentDescription="@string/THUMBNAIL"
-            android:scaleType="fitCenter"
-            app:srcCompat="@mipmap/ic_launcher" />
+        android:weightSum="5">
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            android:layout_weight="1.5"
             android:orientation="vertical"
-            android:weightSum="2">
+            android:weightSum="5">
+
+            <ImageView
+                android:id="@+id/imgPoster"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="fill_vertical"
+                android:layout_weight="4"
+                android:contentDescription="@string/THUMBNAIL"
+                android:scaleType="fitCenter"
+                app:srcCompat="@mipmap/ic_launcher" />
+
 
             <TextView
                 android:id="@+id/tvYear"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="0.5"
                 android:gravity="center"
-                tools:text="2018-05-15"/>
+                tools:text="2018-05-15" />
 
             <TextView
                 android:id="@+id/tvVoteAverage"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="0.5"
                 android:gravity="center"
                 tools:text="Rating: 8.0/10" />
 
         </LinearLayout>
 
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="3.5">
+
+            <TextView
+                android:id="@+id/tvOverview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                tools:text="Wisecracking mercenary Deadpool battles the evil and powerful Cable and other bad guys to save a boy's life." />
+        </ScrollView>
+
     </LinearLayout>
 
-
-    <ScrollView
-        android:layout_weight="1.5"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp">
-
-        <TextView
-            android:id="@+id/tvOverview"
-            android:layout_weight="1.5"
-            tools:text="Wisecracking mercenary Deadpool battles the evil and powerful Cable and other bad guys to save a boy's life."
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </ScrollView>
 </LinearLayout>
