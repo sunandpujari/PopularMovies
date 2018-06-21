@@ -2,9 +2,6 @@ package com.udacity.popularmovies.utils;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import java.io.Serializable;
-
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 

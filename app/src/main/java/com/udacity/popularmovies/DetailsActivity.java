@@ -2,37 +2,29 @@ package com.udacity.popularmovies;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.text.Html;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.squareup.picasso.Picasso;
 import com.udacity.popularmovies.utils.JsonUtil;
 import com.udacity.popularmovies.utils.Movie;
 import com.udacity.popularmovies.utils.Review;
 import com.udacity.popularmovies.utils.Trailer;
-
 import org.json.JSONException;
-
 import java.io.IOException;
 import java.util.List;
-
 import io.realm.Realm;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -44,14 +36,14 @@ public class DetailsActivity extends BaseActivity {
 
     private TextView title, year, rating, overview;
     private ImageView poster;
-    Movie movie;
-    OkHttpClient client;
-    Request request;
-    List<Trailer> trailers;
-    List<Review> reviews;
-    LinearLayout container;
-    Realm realm;
-    MenuItem btnFav;
+    private Movie movie;
+    private OkHttpClient client;
+    private Request request;
+    private List<Trailer> trailers;
+    private List<Review> reviews;
+    private LinearLayout container;
+    private Realm realm;
+    private MenuItem btnFav;
 
 
     @Override
@@ -186,12 +178,12 @@ public class DetailsActivity extends BaseActivity {
                                     LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,3);
                                     params.setMargins(0,0,0,10);
                                     hr.setLayoutParams(params);
-                                    hr.setBackgroundColor(Color.parseColor("#302a27"));
+                                    hr.setBackgroundColor(getResources().getColor(R.color.colorLine));
 
                                     container.addView(hr);
 
                                     TextView header = new TextView(DetailsActivity.this);
-                                    header.setText("Reviews:");
+                                    header.setText(getResources().getString(R.string.REVIEWS_HEADER));
                                     header.setTypeface(Typeface.DEFAULT_BOLD);
                                     header.setTextSize(20);
                                     container.addView(header);
@@ -205,7 +197,7 @@ public class DetailsActivity extends BaseActivity {
 
                                         TextView name = new TextView(DetailsActivity.this);
                                         name.setText(review.getAuthor());
-                                        name.setGravity(Gravity.RIGHT);
+                                        name.setGravity(Gravity.END);
                                         name.setTypeface(Typeface.DEFAULT_BOLD);
                                         container.addView(name);
 
@@ -214,7 +206,7 @@ public class DetailsActivity extends BaseActivity {
                                         params.setMargins(0,15,0,15);
                                         divider.setLayoutParams(params);
 
-                                        divider.setBackgroundColor(Color.parseColor("#969290"));
+                                        divider.setBackgroundColor(getResources().getColor(R.color.colorDivider));
 
                                         container.addView(divider);
 
@@ -262,13 +254,13 @@ public class DetailsActivity extends BaseActivity {
                                     LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,3);
                                     params.setMargins(0,20,0,10);
                                     hr.setLayoutParams(params);
-                                    hr.setBackgroundColor(Color.parseColor("#302a27"));
+                                    hr.setBackgroundColor(getResources().getColor(R.color.colorLine));
 
 
                                     container.addView(hr);
 
                                     TextView header = new TextView(DetailsActivity.this);
-                                    header.setText("Trailers:");
+                                    header.setText(getResources().getString(R.string.TRAILERS_HEADER));
                                     header.setTypeface(Typeface.DEFAULT_BOLD);
                                     header.setTextSize(20);
                                     container.addView(header);
@@ -308,7 +300,7 @@ public class DetailsActivity extends BaseActivity {
                                                 ViewGroup.LayoutParams.FILL_PARENT,
                                                 2));
 
-                                        divider.setBackgroundColor(Color.parseColor("#969290"));
+                                        divider.setBackgroundColor(getResources().getColor(R.color.colorDivider));
 
                                         container.addView(divider);
 

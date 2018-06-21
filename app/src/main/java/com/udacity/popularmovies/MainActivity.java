@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,10 +18,8 @@ import com.udacity.popularmovies.utils.GridViewAdapter;
 import com.udacity.popularmovies.utils.IMoviesAsync;
 import com.udacity.popularmovies.utils.Movie;
 import com.udacity.popularmovies.utils.MoviesAsync;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import io.realm.Realm;
 
 public class MainActivity extends BaseActivity implements IMoviesAsync{
@@ -31,8 +28,7 @@ public class MainActivity extends BaseActivity implements IMoviesAsync{
     private ArrayList<Movie> movieArrayList;
     private GridViewAdapter adapter;
     private GridView gridView;
-    Realm realm;
-    private List<Movie> favoriteMovies;
+    private Realm realm;
 
     private final String KEY_GRID_VIEW_STATE = "grid_view_state";
     private static Bundle mBundleGridViewState;
@@ -94,7 +90,6 @@ public class MainActivity extends BaseActivity implements IMoviesAsync{
         }
         else {
 
-            Log.d(TAG, "setupData: "+movies);
             setTitle(currentSortOrder);
             progressDialog.dismiss();
             movieArrayList.clear();
@@ -149,7 +144,8 @@ public class MainActivity extends BaseActivity implements IMoviesAsync{
     private void loadFavorites(){
 
         realm.beginTransaction();
-        favoriteMovies = realm.where(Movie.class).findAll();
+
+        List<Movie> favoriteMovies = realm.where(Movie.class).findAll();
         realm.commitTransaction();
 
         movieArrayList.clear();

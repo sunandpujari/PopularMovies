@@ -5,7 +5,7 @@ package com.udacity.popularmovies.utils;
  */
 
 public class Trailer {
-    String name, site, key;
+    private String name, site, key;
 
     public String getName() {
         return name;

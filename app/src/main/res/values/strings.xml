@@ -16,5 +16,7 @@
     <string name="SORT_BY_POPULARITY">Sort By Popularity</string>
     <string name="SORT_BY_RATING">Sort By Rating</string>
     <string name="FAVORITE">Favorites</string>
+    <string name="TRAILERS_HEADER">Trailers:</string>
+    <string name="REVIEWS_HEADER">Reviews:</string>
 
 </resources>

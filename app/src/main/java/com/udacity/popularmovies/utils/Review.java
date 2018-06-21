@@ -5,8 +5,8 @@ package com.udacity.popularmovies.utils;
  */
 
 public class Review {
-    String author;
-    String content;
+    private String author;
+    private String content;
 
     public String getAuthor() {
         return author;
