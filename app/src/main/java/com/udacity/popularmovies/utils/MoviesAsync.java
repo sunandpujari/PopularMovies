@@ -1,6 +1,7 @@
 package com.udacity.popularmovies.utils;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.apache.commons.io.IOUtils;
 import org.json.JSONException;
@@ -9,6 +10,8 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+
+import static com.udacity.popularmovies.BaseActivity.TAG;
 
 /**
  * Created by sunand on 5/16/18.
@@ -33,6 +36,8 @@ public class MoviesAsync extends AsyncTask<String, Void, ArrayList<Movie>> {
 
             if (isCancelled())
                 return null;
+
+            Log.d(TAG, "doInBackground: "+params[0]);
 
             URL url = new URL(params[0]);
             connection = (HttpURLConnection) url.openConnection();

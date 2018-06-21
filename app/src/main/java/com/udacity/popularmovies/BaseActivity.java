@@ -10,6 +10,7 @@ public class BaseActivity extends AppCompatActivity {
     public static final String TAG = "Debug";
     protected static final String SORT_ORDER_POPULAR = "Popular Movies";
     protected static final String SORT_ORDER_TOP_RATED = "Top Rated Movies";
+    protected static final String SORT_ORDER_FAVORITES = "Favorite Movies";
     protected String currentSortOrder;
     protected static final String LIFECYCLE_SORT_ORDER_KEY = "Sort Order";
     protected static final String MOVIE_EXTRA_KEY = "MOVIE";
@@ -28,5 +29,11 @@ public class BaseActivity extends AppCompatActivity {
             return getResources().getString(currentSortOrder.equals(SORT_ORDER_TOP_RATED)? R.string.BASE_URL_TOP_RATED:R.string.BASE_URL_POPULAR)+"?api_key=" +getResources().getString(R.string.API_KEY);
     }
 
+    protected String getTrailersURL(long id){
+        return getResources().getString(R.string.BASE_URL)+id+"/videos?api_key=" +getResources().getString(R.string.API_KEY);
+    }
 
+    protected String getReviewsURL(long id){
+        return getResources().getString(R.string.BASE_URL)+id+"/reviews?api_key=" +getResources().getString(R.string.API_KEY);
+    }
 }

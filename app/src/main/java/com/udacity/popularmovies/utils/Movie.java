@@ -5,8 +5,12 @@ import android.os.Parcelable;
 
 import java.io.Serializable;
 
-public class Movie implements Parcelable {
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
+public class Movie extends RealmObject implements Parcelable{
+
+    @PrimaryKey
     private Long id;
     private String title;
     private String release_date;
@@ -99,7 +103,7 @@ public class Movie implements Parcelable {
         this.overview = in.readString();
     }
 
-    public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {
+    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
         @Override
         public Movie createFromParcel(Parcel source) {
             return new Movie(source);

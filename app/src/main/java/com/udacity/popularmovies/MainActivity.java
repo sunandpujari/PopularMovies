@@ -21,6 +21,9 @@ import com.udacity.popularmovies.utils.Movie;
 import com.udacity.popularmovies.utils.MoviesAsync;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import io.realm.Realm;
 
 public class MainActivity extends BaseActivity implements IMoviesAsync{
 
@@ -28,6 +31,8 @@ public class MainActivity extends BaseActivity implements IMoviesAsync{
     private ArrayList<Movie> movieArrayList;
     private GridViewAdapter adapter;
     private GridView gridView;
+    Realm realm;
+    private List<Movie> favoriteMovies;
 
     private final String KEY_GRID_VIEW_STATE = "grid_view_state";
     private static Bundle mBundleGridViewState;
@@ -36,6 +41,9 @@ public class MainActivity extends BaseActivity implements IMoviesAsync{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Realm.init(MainActivity.this);
+        realm = Realm.getDefaultInstance();
 
         progressDialog = new ProgressDialog(MainActivity.this);
         movieArrayList = new ArrayList<>();
@@ -125,6 +133,10 @@ public class MainActivity extends BaseActivity implements IMoviesAsync{
                     currentSortOrder = SORT_ORDER_TOP_RATED;
                     startAsyncTask();
                 return true;
+            case R.id.btnFav:
+                currentSortOrder = SORT_ORDER_FAVORITES;
+                loadFavorites();
+                return true;
             case R.id.btnExit:
                 finishAffinity();
                 System.exit(0);
@@ -132,6 +144,21 @@ public class MainActivity extends BaseActivity implements IMoviesAsync{
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void loadFavorites(){
+
+        realm.beginTransaction();
+        favoriteMovies = realm.where(Movie.class).findAll();
+        realm.commitTransaction();
+
+        movieArrayList.clear();
+        movieArrayList.addAll(favoriteMovies);
+
+        adapter.notifyDataSetChanged();
+
+        setTitle(currentSortOrder);
+
     }
 
     private void startAsyncTask(){

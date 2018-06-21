@@ -1,5 +1,7 @@
 package com.udacity.popularmovies.utils;
 
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,5 +40,41 @@ public class JsonUtil {
         }
 
         return movieList;
+    }
+
+    public static List<Review> ParseReviews(String json) throws JSONException {
+
+        List<Review> reviewList = new ArrayList<>();
+
+        JSONObject root = new JSONObject(json);
+        JSONArray results = root.getJSONArray("results");
+
+        for (int i = 0; i < results.length(); i++) {
+
+            JSONObject obj = results.getJSONObject(i);
+            Gson gson = new Gson();
+            reviewList.add(gson.fromJson(obj.toString(), Review.class));
+
+        }
+
+        return reviewList;
+    }
+
+    public static List<Trailer> ParseTrailers(String json) throws JSONException {
+
+        List<Trailer> trailerList = new ArrayList<>();
+
+        JSONObject root = new JSONObject(json);
+        JSONArray results = root.getJSONArray("results");
+
+        for (int i = 0; i < results.length(); i++) {
+
+            JSONObject obj = results.getJSONObject(i);
+            Gson gson = new Gson();
+            trailerList.add(gson.fromJson(obj.toString(), Trailer.class));
+
+        }
+
+        return trailerList;
     }
 }

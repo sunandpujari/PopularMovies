@@ -3,5 +3,6 @@
 
     <item android:title="@string/SORT_BY_POPULARITY" android:id="@+id/btnPopularity" />
     <item android:title="@string/SORT_BY_RATING" android:id="@+id/btnRating" />
+    <item android:title="@string/FAVORITE" android:id="@+id/btnFav" />
     <item android:title="@string/EXIT" android:id="@+id/btnExit" />
 </menu>
