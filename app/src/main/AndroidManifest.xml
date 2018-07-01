@@ -26,6 +26,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.udacity.popularmovies.MainActivity" />
         </activity>
+
+        <provider
+            android:name=".data.FavoritesProvider"
+            android:authorities="com.udacity.popularmovies"
+            android:exported="true" />
     </application>
+
+
 
 </manifest>

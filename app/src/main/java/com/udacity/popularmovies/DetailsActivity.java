@@ -25,7 +25,6 @@ import com.udacity.popularmovies.utils.Trailer;
 import org.json.JSONException;
 import java.io.IOException;
 import java.util.List;
-import io.realm.Realm;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -42,7 +41,6 @@ public class DetailsActivity extends BaseActivity {
     private List<Trailer> trailers;
     private List<Review> reviews;
     private LinearLayout container;
-    private Realm realm;
     private MenuItem btnFav;
 
 
@@ -53,8 +51,6 @@ public class DetailsActivity extends BaseActivity {
 
         if(getIntent() != null) {
 
-            Realm.init(this);
-            realm = Realm.getDefaultInstance();
 
             Intent intent = getIntent();
             movie = intent.getParcelableExtra(MOVIE_EXTRA_KEY);
@@ -115,9 +111,7 @@ public class DetailsActivity extends BaseActivity {
 
     public void updateFavStatus() {
 
-        realm.beginTransaction();
-        Movie exists = realm.where(Movie.class).equalTo("id",movie.getId()).findFirst();
-        realm.commitTransaction();
+        Movie exists = getFavoriteMovie(movie.getId());
 
         if(exists !=null)
             btnFav.setIcon(R.mipmap.ic_fav_filled);
@@ -128,23 +122,17 @@ public class DetailsActivity extends BaseActivity {
     private void updateFavorites(){
 
 
-        realm.beginTransaction();
-        Movie exists = realm.where(Movie.class).equalTo("id",movie.getId()).findFirst();
-        realm.commitTransaction();
+        Movie exists = getFavoriteMovie(movie.getId());
 
         if(exists !=null){
             //delete
-            realm.beginTransaction();
-            realm.where(Movie.class).equalTo("id", movie.getId()).findFirst().deleteFromRealm();
-            realm.commitTransaction();
+            deleteFavoriteMovie(movie.getId());
             btnFav.setIcon(R.drawable.ic_fav);
 
         }else {
             //insert
 
-            realm.beginTransaction();
-            realm.copyToRealmOrUpdate(movie);
-            realm.commitTransaction();
+            insertNewRecord(movie);
             btnFav.setIcon(R.mipmap.ic_fav_filled);
 
         }

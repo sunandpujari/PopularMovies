@@ -2,12 +2,9 @@ package com.udacity.popularmovies.utils;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
 
-public class Movie extends RealmObject implements Parcelable{
+public class Movie implements Parcelable{
 
-    @PrimaryKey
     private Long id;
     private String title;
     private String release_date;
